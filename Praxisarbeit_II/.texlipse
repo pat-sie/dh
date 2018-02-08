@@ -1,0 +1,14 @@
+#TeXlipse project settings
+#Thu Feb 08 11:39:35 CET 2018
+markTmpDer=true
+builderNum=2
+outputDir=
+makeIndSty=
+bibrefDir=
+outputFormat=pdf
+tempDir=tmp
+mainTexFile=Praxisarbeit_II.tex
+outputFile=Praxisarbeit_II.pdf
+langSpell=de
+markDer=true
+srcDir=
