@@ -1,4 +1,60 @@
 \chapter{Umsetzung}\label{sec:umsetzung}
+\section{Auswahl des Roboters}
+In Kapitel \ref{sec:moderne-humanoide-roboter} auf Seite
+\pageref{sec:moderne-humanoide-roboter} werden verschiedene humanoide Roboter
+vorgestellt. Nun soll der Roboter ausgewählt werden, der am besten dafür
+geeignet ist PowerPoint-Präsentationen vorzustellen.
+
+\subsection{Fähigkeiten}
+Vorraussetzungen für das Präsentieren von PowerPoint-Folien sind eine
+Sprachausgabe und eine Möglichkeit die einzelnen Folien anzuzeigen. Beides kann
+zwar durch die Anbindung eines externen Lautsprechers bzw. Bildschirms ersetzt
+werden, da der eingesetzte Roboter in der Fiducia \& GAD jedoch nur ähnliche
+Aufgaben übernimmt, die die gleichen Vorraussetzungen haben, würde ein Roboter
+ohne Lautsprecher oder ein Display die Umsetzung der Anwendung nur unnötig
+komplizierter machen.
+
+\subparagraph{}
+Damit sind die Roboter Atlas und Sophia nicht die optimale Lösung. Bei Atlas
+wird der Fokus darauf gelegt, dass er sich möglichst stabil bewegen kann. Auf
+andere Fähigkeiten, die ihn menschlich machen wurde keine Rücksicht genommen. So
+besitzt er weder Lautsprecher noch Displays. Da der Roboter sich nur auf
+bekanntem und geradem Gelände bewegen wird (die Präsentationen werden auf
+Messen oder in Banken mit festem Boden, nicht z.~B. im Wald vorgetragen) bringt
+die Fähigkeit, sich sicher auf den Beinen zu halten, keinen entscheidenten
+Vorteil, der den Einsatz von Atlas gerechtfertigen würde.
+
+\subparagraph{}
+Sophia soll einem Menschen möglichst ähnlich sein. Damit besitzt der Roboter
+Lautsprecher zur Sprachausgabe, jedoch selbstverständlich kein eingebautes
+Display.
+
+\subparagraph{}
+Die anderen Roboter (Hub-Robot, Paul und Pepper) sind jeweils mit Lautsprechern
+und Displays ausgestattet. Auch falls weitere Fähigkeiten für die Erweiterung
+notwendig werden, sind diese drei Roboter gleich gut ausgestattet. Zum Beispiel
+haben sie die Möglichkeit sich zu bewegen. Außerdem verfügen sie über eine
+Verbindung zum Internet um Dialogsysteme, wie z.~B. Microsoft Azure, IBM Watson,
+Google Home oder Alexa von Amazon verwenden zu können.
+
+\subsection{Wirkung auf Kunden}
+Da das Ziel ist, mit dem Roboter Kunden anzulocken und Kunden mit dem Roboter
+interagieren sollen, ist die Wirkung, die der Roboter auf einen Menschen hat bei
+der Auswahl des Roboters zu beachten. Die Menschen verbinden mit verschiedenen
+Robotern verschiedene Emotionen, auf diese muss Rücksicht genommen werden.
+
+\subparagraph{}
+Boston Dynamics bezeichnet seine Roboter selbst als "`Albtraum-Auslöser"'
+("`nightmare-inducing"' \cite{Guardian2018}). Zwar löst Atlas eine große
+Faszination aus, wenn er sich bewegt wie ein Mensch, sich nicht umwerfen lässt
+und sogar Saltos machen kann. Allerdings löst er auch skepsis aus. Atlas ist
+robust gebaut und wirkt eher aggresiv als einladend. Nicht zuletzt weil er auch
+für militärische Zwecke eingesetzt werden soll ist Atlas nicht geeignet um
+Kunden auf Messen oder in Banken neue Produkte vorzustellen.
+
+\subparagraph{}
+
+\subsection{Fazit}
 
 \section{Struktur}\label{sec:struktur}
 Der größte Teil der Anwendung läuf auf einem Flask-Server. Auf diesem Server
