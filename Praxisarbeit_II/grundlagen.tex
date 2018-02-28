@@ -2,52 +2,41 @@
 \section{Python}\label{sec:python}
 Anwendungen für den Roboter Pepper (Kapitel \ref{sec:pepper}) können in Python,
 C++, Java, JavaScript oder ROS programmiert werden. \cite{SoftBankIII2018} Bei
-den bisherigen Anwendungen wurde Python als Programmiersprache ausgewählt.
-Deshalb wird auch für diese Anwendung, neben JavaScript für die Webseite, als
-hauptsächliche Programmiersprache verwendet.
-
-\subparagraph{}
- "`Python ist eine portable,
+den bisherigen Anwendungen wurde Python als Programmiersprache verwendet.
+Deshalb wird auch für diese Anwendung als
+hauptsächliche Programmiersprache verwendet. "`Python ist eine portable,
 interpretative, objektorientiere Programmiersprache"' \cite{Weigend2017}. Ihre
-Entwicklung wurde 1989 von Guido van Rossum begonnen. Heute wird die
-Entwicklung von der nichtkommerziellen Organisation "`Python Software Foundation"'
+Entwicklung wurde 1989 von Guido van Rossum begonnen. Heute wird die Entwicklung
+von der nichtkommerziellen Organisation "`Python Software Foundation"'
 \footnote{\url{https://www.python.org/psf/}} koordiniert.
 
 \subparagraph{}
 Das Python-Skript wird von einem Interpreter ausgeführt. Python-Skripte können
-auf verschiedenen Systemplattformen (Unix, Windows, Mac OS) laufen, deshalb
-bezeichnet man Python als portable Sprache. Zudem kann mit Python sehr gut
-lesbarer Code geschrieben werden und ein Programm kann mit weniger Code erstellt
+auf verschiedenen Systemplattformen (Unix, Windows, Mac OS) ausgeführt werden.
+Deshalb bezeichnet man Python als portable Sprache. Zudem gilt Python-Code als
+sehr gut lesbar und ein Programm kann mit weniger Code erstellt
 werden als in anderen Programmiersprachen. Listing \ref{lst:python-hello-world}
-zeigt ein Hello World Programm in Python im Vergleich zu einem Java-Programm in
-Listing \ref{lst:java-hello-world}, welches die gleiche Funktion hat.
-Die aktuelle Version ist 3.6.
-Da auf dem Roboter allerdings Python 2.7 installiert ist, wird die Anwendung mit dieser
-Version entwickelt. \cite{Weigend2017}
+zeigt ein "`Hello World"'-Programm in Python im Vergleich zu einem Java-Programm
+in Listing \ref{lst:java-hello-world}, welches die gleiche Funktion hat.
+Die aktuelle Python Version ist 3.6.
+Da auf dem Roboter allerdings Python 2.7 installiert ist, wird die Anwendung mit
+dieser Version entwickelt. \cite{Weigend2017}
 
 \begin{lstlisting}[float, language=Python, frame=single, framexleftmargin=15pt,
 style=algoBericht, label={lst:python-hello-world}, captionpos=b, caption={Hello
-World in Python}] 
+World in Python}]
 print "Hello, world!"
 \end{lstlisting}
 
 \begin{lstlisting}[float, language=Java, frame=single, framexleftmargin=15pt,
 style=algoBericht, label={lst:java-hello-world}, captionpos=b, caption={Hello
-World in Java}] 
-public class HelloWorld
-{
-	public static void main(String[] args)
-	{
-		System.out.println("Hello, world!");
+World in Java}]
+public class HelloWorld { 
+	public static void main(String[] args) {
+		System.out.println("Hello, world!"); 
 	}
 }
 \end{lstlisting}
-
-\section{JavaScript}\label{sec:javascript}
-%TODO
-JavaScript ist, wie der Name bereits sagt, eine Skriptsprache. Verwendet wird
-sie hauptsächlich im World Wide Web. Mit JavaScript lassen sich Objekte, wie zum
-Beispiel das Browserfenster, beeinflussen. \cite{Steyer2010}
 
 \section{PowerPoint}\label{sec:powerpoint}
 Microsoft PowerPoint ist ein sehr weit verbreitetes Programm zum erstellen von
@@ -56,59 +45,61 @@ Präsentationsfolien.
 \section{Flask}\label{sec:flask}
 Flask ist ein Python Package zum erstellen eines Servers.
 
-\section{Verteilte Systeme}\label{sec:verteilte-systeme}
+\section{Verteilte Systeme}
 
-\subsection{Client-Server-Modell}\label{sec:client-server-modell}
-Client-Server-Systeme bestehen aus zwei logischen Einheiten. Diese sind ein,
-oder mehrere Clients und ein Server. Die Clients fordern Dienste oder Daten des
-Servers an. Der Server stellt die entsprechenden Dienste oder Daten zur
-Verfügung.
+\subsection{Client}
+Ein Client ist eine Ausführungseinheit, die mit einem Server in einer
+Konsumenten-Produzenten-Beziehung steht. Der Client dient als Konsument. Er
+stellt Anfragen zu Diensten oder Informationen an den Server. Die Antwort auf
+diese Anfragen werden vom Client zu seinem eigenen Zweck und zur Erledigung
+seiner Aufgabe verwendet. Clients sind auslösende Prozesse, auf die ein Server
+reagieren kann. Sie können Aktivitäten zu beliebigen Zeiten initiieren.
+\cite{Bengel2015}
 
-\subparagraph{}
-%TODO
-Zusammen bilden diese Einheiten ein komplettes System mit unterschiedlichen
-Zuständigkeitsbereichen, wobei diese Zuständigkeiten oder Rollen fest zugeordnet
-sind. Entweder ist ein Prozess ein Client oder ein Server. Ein Server kann
-mehrer Kunden (Clients) bedienen. Die Kunden eines Servers haben keinerlei
-Kenntnis voneinander und stehen demgemäß auch in keinem Bezug zueinander, außer
-der Tatsache, dass sie den gleichen Serber verwenden. Clients und Server können
-auf dem gleichen oder auf unterschiedlichen Rechnern laufen.
+\subsection{Server}
+Der Server dient in der Konsumenten-Produzenten-Beziehung als Produzent. Er
+bearbeitet die Daten- und Dienstanfragen, die durch einen Client gestellt
+werden. Ein Server ist ein reagierender Prozess. Er wartet auf Anfragen durch
+einen Client und reagiert darauf, sobald eine Anfrage gestellt wird. Nach dem
+Bearbeiten sendet der Server das Ergebnis an den entsprechenden Client zurück.
 
-\subparagraph{} 
-%TODO
-Client und Server sind zwei Ausführungspfade oder -einheiten mit einer
-Komsumenten-Produzenten-Beziehung. Clients dienen als Konsumenten und tätigen
-Anfragen an Server über Dienste oder Information. Sie benutzen dann die
-Rückantwort zu ihrem eigenen Zweck und zur Erledigung ihrer Aufgabe. Server
-spielen die Rolle des Produzenten und erledigen die Daten- oder Dienstanfragen,
-die von den Clients gestellt wurden. Die Interaktion zwischen den Clients und
-dem Server verlaufen somit nach einem fest borgegebenen Protokoll: Der Client
+Die Interaktion zwischen den Clients und
+dem Server verlaufen somit nach einem fest vorgegebenen Protokoll: Der Client
 sendet eine Anforderung (Request) an den Server, dieser erledigt die Anforderung
 oder Anfrage und schickt eine Rückantwort (Reply) zurück an den Client.
 
-\subparagraph{}
-%TODO
-Ein Client ist ein auslösender Prozess, und ein Server ist ein reagierender
-Prozess. Clients tätigen eine Anforderung, die eine Reaktion des Servers
-ausläst. Clients initiieren Aktivitäten zu beliebigen Zeitpunkten, und
-andererseits warten Server auf Anfragen von Clients und reagieren dann darauf.
 Der Server stellt somit einen zentralen Punkt dar, an den Anforderungen
-geschickt werden können, und nach Erledigung der Anfrage sendet der Server das
-Ergebnis an den Client zurück.
+geschickt werden können
+\cite{Bengel2015}
+
+\subsection{Client-Server-Modell}
+Client-Server-Systeme bestehen aus einem Server und einem oder mehreren Clients.
+Dabei können Clients und Server auf unterschiedlichen aber auch auf dem gleichen
+Rechner laufen. Client und Server haben unterschiedliche Zuständigkeitsbereich,
+diese sind ihnen jeweils fest zugeordnet. Zusammen bilden diese Einheiten ein
+komplettes System. Ein Server kann mehrere Clients bedienen. Die Clients haben
+keine Kenntnis voneinander. Der einzige Bezug zueinander ist, dass sie den
+gleichen Server verwenden.
+
+\subparagraph{}
+Die Interaktion zwischen Client und Server laufen nach einem fest vorgegebenen
+Protokoll ab. "`Der Client sendet eine Anforderung (Request) an den Server,
+dieser erledigt die Anforderung oder Anfrage und schickt eine Rückantwort
+(Reply) zurück an den Client."'
 \cite{Bengel2015}
 
 \section{MQTT}\label{sec:mqtt}
-\ac{mqtt} ist ein Protokoll zum Austausch von Nachrichten. Es ist simpel
-aufgebaut und wurde für die Verwendung zwischen Geräten mit geringer
+\ac{mqtt} ist ein lizenzfreies Protokoll zum Austausch von Nachrichten. Es ist
+simpel aufgebaut und wurde für die Verwendung zwischen Geräten mit geringer
 Funktionalität entwickelt. Da \ac{mqtt} ein sehr robustes Protokoll ist, eignet
 es sich gut für unzuverlässige Netze mit geringer Bandbreite und hoher
 Latenzzeit. \ac{mqtt} bietet eine hohe Zuverlässigkeit und minimiert die
-genutzte Bandbreite. Durch die Eigenschaften von \ac{mqtt} wird es z.~B. bei
-Sensornetzwerken, Machine to Machine, Telemedizin, Patientenüberwachung und
-"`Internet der Dinge"' eingesetzt.
+genutzte Bandbreite. Aufgrund dieser Eigenschaften wird \ac{mqtt} z.~B.
+bei Sensornetzwerken, Machine to Machine, Telemedizin, Patientenüberwachung und
+dem "`Internet der Dinge"' eingesetzt.
 
 \subparagraph{}
-\ac{mqtt} ist offen und lizenzfrei. Das Protokoll wurde 1999 von IBM für die
+Das Protokoll wurde 1999 von IBM für die
 Satellitenkommunikation entwickelt. Später wurde es auch in vielen weiteren
 industriellen Anwendungen eingesetzt.
 
@@ -116,4 +107,5 @@ industriellen Anwendungen eingesetzt.
 \ac{mqtt} ist einfach zu implementieren. Es kann ununterbrochene Sitzungen mit
 Geräten betreiben. Seine Struktur besteht aus einem Publisher, einem Subscriber
 und einem Message-Broker, der für die Kommunikationssteuerung sorgt.
+% TODO erklären was Publisher, Subscriber und Message-Broker sind
 \cite{dennisseidel2018}
