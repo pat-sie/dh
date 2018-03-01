@@ -43,7 +43,32 @@ Microsoft PowerPoint ist ein sehr weit verbreitetes Programm zum erstellen von
 Präsentationsfolien.
 
 \section{Flask}\label{sec:flask}
-Flask ist ein Python Package zum erstellen eines Servers.
+Flask ist ein Mikroframework für Python zum erstellen von Webanwendungen. Es ist
+möglichst einfach aufgebaut, aber umfasst trotzdem alle nötigen Funktionen.
+Einfache Anwendungen können mit Flask schnell erstellt werden. \cite{Flask2018}
+Listing \ref{lst:flask-simpel} zeigt den Aufbau einer einfachen Webanwendung, die mit
+Hilfe von Flask auf der Startseite "`Hello, world!"' ausgibt.
+\texttt{@app.route("'/"')} gibt an welchen Pfad der Benutzer aufrufen muss,
+damit die entsprechende Methode (in diesem Fall \texttt{hello()}) ausgeführt
+wird. Mit \texttt{app.run()} wird der Server gestartet. Durch die Verwendung von
+\texttt{return render\_template("'hello.html"')} können HTML-Dateien (in diesem
+Beispiel die Datei "`hello.html"') dargestellt werden. So lässt sich eine
+Webanwendung entwickeln, die beim Aufruf verschiedener Pfade jeweils eine
+HTML-Webseite darstellt.
+
+\begin{lstlisting}[float, language=Python, frame=single, framexleftmargin=15pt,
+style=algoBericht, label={lst:flask-simpel}, captionpos=b, caption={Einfache
+Webanwendung, die auf der Startseite "`Hello, world!"' ausgibt}]
+from flask import Flask
+app = Flask(__name__)
+
+@app.route("/")
+def hello():
+	return "Hello, world!"
+
+if __name__ == "__main__":
+	app.run()
+\end{lstlisting}
 
 \section{Verteilte Systeme}
 
