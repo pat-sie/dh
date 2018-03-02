@@ -1,2 +1,26 @@
 \chapter{Ausblick}\label{sec:ausblick}
-Hier steht ein Ausblick
+Aktuell laufen die Flask-Anwendung und der \ac{mqtt} Message Broker lokal auf
+einem Computer. Im produktiven Einsatz soll es für einen Kunden möglich sein über das
+Internet eine PowerPoint-Datei hochzuladen und diese einfach durch Pepper
+vorstellen zu lassen. Dazu muss die Anwendung auf einem Server laufen.
+
+\subparagraph{}
+Potenziell besteht die Möglichkeit mehrere Roboter einzusetzen. Durch die
+Verwendung von \ac{mqtt} erhält der Roboter eine Nachricht vom Server, welche
+Präsentation vorgestellt werden soll. Danach läuft die Anwendung unabhängig vom
+Server. Da die Fiducia \& GAD derzeit nur im Besitzt eines Exemplars von Pepper
+ist, ist eine Unterscheidung zwischen verschiedenen Robotern nicht nötig. In der
+Zukunft kann die Anwendung aber ohne großen Aufwand so erweitert werden, dass
+mehrere Roboter gleichzeitig verschiedene (oder auch die gleiche) Präsentationen
+vorstellen können. Falls sich eine oder mehrere Banken für den dauerhaften
+Einsatz von Pepper in einer Filliale entscheiden, ist diese Funktion nötig.
+
+\subparagraph{}
+Um nicht zwei verschiedene Anwendung auf Pepper installieren zu müssen, kann das
+Präsentieren von PowerPoint-Folien als zusätzliches Feature in die aktuelle
+Anwendung, den "`Pepper Bot"' implementiert werden. Damit müssen für
+verschiedene Anwendungsfälle nicht verschieden Programme gestartet werden. Die
+Anwendungen auf Pepper würden vereinheitlicht werden. Außerdem werden im
+"`Pepper Bot"' bereits IBM Watson, Microsoft Azure und MQTT verwendet. So ist es
+möglich diese Funktionen auch während der Präsentation zu verwenden ohne erneut
+den Aufwand, den dies benötigt, aufbringen zu müssen.

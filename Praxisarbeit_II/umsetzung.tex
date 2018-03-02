@@ -17,8 +17,9 @@ komplizierter machen.
 \subparagraph{}
 Damit sind die Roboter Atlas und Sophia nicht die optimale Lösung. Bei Atlas
 wird der Fokus darauf gelegt, dass er sich möglichst stabil bewegen kann. Auf
-andere Fähigkeiten, die ihn menschlich machen wurde keine Rücksicht genommen. So
-besitzt er weder Lautsprecher noch Displays. Da der Roboter sich nur auf
+andere Fähigkeiten, die ihn menschlich machen würden, wurde keine Rücksicht
+genommen.
+So besitzt er weder Lautsprecher noch Displays. Da der Roboter sich nur auf
 bekanntem und geradem Gelände bewegen wird (die Präsentationen werden auf
 Messen oder in Banken mit festem Boden, nicht z.~B. im Wald vorgetragen) bringt
 die Fähigkeit, sich sicher auf den Beinen zu halten, keinen entscheidenten
@@ -30,7 +31,7 @@ Lautsprecher zur Sprachausgabe, jedoch selbstverständlich kein eingebautes
 Display.
 
 \subparagraph{}
-Die anderen Roboter (Hub-Robot, Paul und Pepper) sind jeweils mit Lautsprechern
+Die anderen Roboter (Hub Robot, Paul und Pepper) sind jeweils mit Lautsprechern
 und Displays ausgestattet. Auch falls weitere Fähigkeiten für die Erweiterung
 notwendig werden, sind diese drei Roboter gleich gut ausgestattet. Zum Beispiel
 haben sie die Möglichkeit sich zu bewegen. Außerdem verfügen sie über eine
@@ -100,7 +101,7 @@ neutralere Helfer als Pepper und der kleinere Hub Robot.
 \subsection{Fazit}
 Sowohl Atlas als auch Sophia sind für die Anwendung nicht geeignet. Zum Einen
 besitzen sie von den vorgestellten humanoiden Robotern die schlechtesten
-Technischen Vorraussetzungen, da beide nicht mit einem Display ausgestattet sind
+technischen Vorraussetzungen, da beide nicht mit einem Display ausgestattet sind
 und Atlas ohne Sprachausgabe auskommen muss. Zum Anderen lösen beide Roboter
 neben Faszination und Interesse auch Skepsis und Furcht aus. Die Banken und die
 Kunden sollen von den positiven Eigenschaften des humanoiden Roboters überzeugt
@@ -121,25 +122,66 @@ Pepper auszuwählen ist also die Richtige.
 
 \section{Auswahl des Dialogsystems}\label{sec:auswahl-dialogsystem}
 Für Anwendungen, welche bisher für Pepper entwickelt wurden, wird IBM Watson und
-Microsoft Azzure zur Sprachverarbeitung verwendet. Der Roboter besitzt aber auch
+Microsoft Azure zur Sprachverarbeitung verwendet. Der Roboter besitzt aber auch
 ein bereits implementiertes Dialogsystem, welches verwendet werden kann.
 
 \subparagraph{}
-Watson und Azzure ermöglichen es, mit dem Roboter auf natürliche Weise zu
+Watson und Azure ermöglichen es, mit dem Roboter auf natürliche Weise zu
 kommunizieren. Dazu ist jedoch ein erheblicher Mehraufwand nötig, als wenn das
 Dialogsystem von Pepper benutzt wird. Für das Präsentieren von PowerPoint-Folien
 ist es nicht nötig komplexe Gespräche zwischen einem Menschen und dem Roboter zu
 unterstützen. Eine Anwendung, die Smalltalk mit Pepper ermöglicht wird von der
 Fiducia \& GAD bereits entwickelt.
 
-\section{Struktur}\label{sec:struktur}
-Der größte Teil der Anwendung läuf auf einem Flask-Server. Auf diesem Server
-werden PowerPoint-Dateien, die vom Benutzer hochgeladen werden können, zur
-Präsentation durch Pepper umgewandelt. Dazu werden die einzelnen Folien zu
-Bildern zur Darstellung als HTML-Datei konvertiert. Die Notizen der Folien
-werden als Text extrahiert. Diesen Text wird Pepper während der Präsentation
-passend zur jeweiligen Folie vorlesen. Die Folien werden auf dem Tablet auf
-Peppers Brust angezeigt. Welche Präsentation vorgestellt werden soll, kann auf
-dem Tablet ausgewählt werden.
+\subparagraph{}
+Um viel Overhead zu vermeiden wird für die PowerPoint-Präsentation das
+Dialogsystem des Roboters verwendet. Damit lassen sich Dialoge einfach
+erstellen, indem dem Roboter vorgeschrieben wird, wie er auf welche Aussagen
+oder Fragen des Menschen reagieren muss. Listing \ref{lst:pepper-dialog} zeigt
+den Aufbau eines einfachen Dialogs. Pepper wird auf die Frage "`Wie heißt du?"'
+mit "`Mein Name ist Pepper"' antworten. Eine Erweiterung des Dialogs ist
+möglich. Z.~B. können mehrere alternative Antworten vorgegeben werden, von denen
+Pepper eine Zufällige auswählt. Zudem ist es möglich auf Fragen oder Antworten
+des Benutzers nur zu reagieren, wenn er zuvor etwas bestimmtes, anderes fragt.
+So kann der Roboter entsprechend des Kontexts antworten. Listing
+\ref{lst:pepper-dialog-kontext} zeigt hierfür ein Beispiel. Pepper wird je
+nachdem, welche Antwort der Benutzer auf die Gegenfrage des Roboters gibt,
+entsprechend reagieren.
 
-\section{Server}\label{sec:server}
+\begin{lstlisting}[float, language=Python, frame=single, framexleftmargin=15pt,
+style=algoBericht, label={lst:pepper-dialog}, captionpos=b, caption={Einfacher
+Dialog mit Pepper}] 
+u:(Wie heisst du)
+	Mein Name ist Pepper.
+\end{lstlisting}
+
+\begin{lstlisting}[float, language=Python, frame=single, framexleftmargin=15pt,
+style=algoBericht, label={lst:pepper-dialog-kontext}, captionpos=b,
+caption={Dialog mit Pepper mit Kontext}] 
+u:(Wie geht es dir)
+	Mir geht es gut, und dir?
+	
+	u1:(gut)
+		Das ist schoen.
+		
+	u2:(schlecht)
+		Das ist schade.
+\end{lstlisting}
+
+\section{Umwandlung der PowerPoint-Folien}
+Der Roboter liest die Notizen zu einer Folie vor. Die Notizen werden mit dem
+Python Package \emph{pptx} in Text, den Pepper vorlesen kann, umgewandelt.
+
+\subparagraph{}
+Um die Folien der PowerPoint-Präsentation auf dem Tablet des Roboters
+anzuzeigen, müssen sie als HTML-Dateien dargestellt werden. Die direkte
+Umwandlung von PowerPoint-Dateien in HTML-Dateien führt häufig zu
+Formatierungsfehlern. Deshalb werden die einzelnen Folien zu Bildern
+umgewandelt, welche in einer HTML-Datei eingebunden werden. 
+
+\subparagraph{}
+Um eine Abhängigkeit des Programms von PowerPoint zu vermeiden, wird diese
+Umwandlung mit LibreOffice durchgeführt. So kann die Anwendung
+plattformunabhängig laufen, während sonst ein Microsoft-Server mit
+installiertem PowerPoint nötig wäre.
+

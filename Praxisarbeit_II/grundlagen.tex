@@ -17,7 +17,7 @@ Deshalb bezeichnet man Python als portable Sprache. Zudem gilt Python-Code als
 sehr gut lesbar und ein Programm kann mit weniger Code erstellt
 werden als in anderen Programmiersprachen. Listing \ref{lst:python-hello-world}
 zeigt ein "`Hello World"'-Programm in Python im Vergleich zu einem Java-Programm
-in Listing \ref{lst:java-hello-world}, welches die gleiche Funktion hat.
+in Listing \ref{lst:java-hello-world}, welches die gleiche Funktion umfasst.
 Die aktuelle Python Version ist 3.6.
 Da auf dem Roboter allerdings Python 2.7 installiert ist, wird die Anwendung mit
 dieser Version entwickelt. \cite{Weigend2017}
@@ -39,8 +39,7 @@ public class HelloWorld {
 \end{lstlisting}
 
 \section{PowerPoint}\label{sec:powerpoint}
-Microsoft PowerPoint ist ein sehr weit verbreitetes Programm zum erstellen von
-Präsentationsfolien.
+???
 
 \section{Flask}\label{sec:flask}
 Flask ist ein Mikroframework für Python zum erstellen von Webanwendungen. Es ist
@@ -71,7 +70,6 @@ if __name__ == "__main__":
 \end{lstlisting}
 
 \section{Verteilte Systeme}
-
 \subsection{Client}
 Ein Client ist eine Ausführungseinheit, die mit einem Server in einer
 Konsumenten-Produzenten-Beziehung steht. Der Client dient als Konsument. Er
@@ -88,13 +86,13 @@ werden. Ein Server ist ein reagierender Prozess. Er wartet auf Anfragen durch
 einen Client und reagiert darauf, sobald eine Anfrage gestellt wird. Nach dem
 Bearbeiten sendet der Server das Ergebnis an den entsprechenden Client zurück.
 
+\subparagraph{}
 Die Interaktion zwischen den Clients und
 dem Server verlaufen somit nach einem fest vorgegebenen Protokoll: Der Client
 sendet eine Anforderung (Request) an den Server, dieser erledigt die Anforderung
-oder Anfrage und schickt eine Rückantwort (Reply) zurück an den Client.
-
-Der Server stellt somit einen zentralen Punkt dar, an den Anforderungen
-geschickt werden können
+oder Anfrage und schickt eine Rückantwort (Reply) zurück an den Client. Der
+Server stellt somit einen zentralen Punkt dar, an den Anforderungen geschickt
+werden können
 \cite{Bengel2015}
 
 \subsection{Client-Server-Modell}
@@ -129,8 +127,12 @@ Satellitenkommunikation entwickelt. Später wurde es auch in vielen weiteren
 industriellen Anwendungen eingesetzt.
 
 \subparagraph{}
-\ac{mqtt} ist einfach zu implementieren. Es kann ununterbrochene Sitzungen mit
-Geräten betreiben. Seine Struktur besteht aus einem Publisher, einem Subscriber
-und einem Message-Broker, der für die Kommunikationssteuerung sorgt.
-% TODO erklären was Publisher, Subscriber und Message-Broker sind
+Die Struktur von \ac{mqtt} besteht aus einem Publisher, einem Subscriber
+und einem Message-Broker. Der Publisher sendet Nachrichten, der Subscriber
+empfängt bestimmte Nachrichten. Der Message-Broker dient als
+Kommunikationssteuerung und sorgt für das Verteilen der Nachrichten, welche von
+einem Publisher gesendet werden. Der Subscriber kann ein bestimmtes Topic
+(Thema) subscriben (abonnieren). Ein Publisher sendet eine Nachricht, die das
+Thema und einen Inhalt beinhaltet, an den Message-Broker. Dieser sendet die
+Nachricht an alle Subscriber, die das Thema der Nachricht abonniert haben.
 \cite{dennisseidel2018}
