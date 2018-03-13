@@ -51,12 +51,12 @@ public class HelloWorld {
 
 
 \section{Flask}\label{sec:flask}
-Flask ist ein Mikroframework für Python zum erstellen von Webanwendungen. Es ist
+Flask ist ein Mikroframework für Python zum Erstellen von Webanwendungen. Es ist
 möglichst einfach aufgebaut, aber umfasst trotzdem alle nötigen Funktionen.
 Einfache Anwendungen können mit Flask schnell erstellt werden. \cite{Flask2018}
 Listing \ref{lst:flask-simpel} zeigt den Aufbau einer einfachen Webanwendung, die mit
 Hilfe von Flask auf der Startseite "`Hello, world!"' ausgibt.
-\texttt{@app.route("'/"')} gibt an welchen Pfad der Benutzer aufrufen muss,
+\texttt{@app.route("'/"')} gibt an, welchen Pfad der Benutzer aufrufen muss,
 damit die entsprechende Methode (in diesem Fall \texttt{hello()}) ausgeführt
 wird. Mit \texttt{app.run()} wird der Server gestartet. Durch die Verwendung von
 \texttt{return render\_template("'hello.html"')} können HTML-Dateien (in diesem
@@ -136,12 +136,15 @@ Satellitenkommunikation entwickelt. Später wurde es auch in vielen weiteren
 industriellen Anwendungen eingesetzt.
 
 \subparagraph{}
+\begin{figure}
+  \centering
+     \includegraphics[width=\textwidth]{mqtt-struktur}
+  \caption{Struktur von \ac{mqtt}}
+  \label{fig:mqtt}
+\end{figure}
 
-%% TODO
-%% Hier noch eine Grafik einfügen?
-
-Die Struktur von \ac{mqtt} besteht aus einem Publisher, einem Subscriber
-und einem Message-Broker. Der Publisher sendet Nachrichten, der Subscriber
+Die Struktur von \ac{mqtt} (vgl. Abb. \ref{fig:mqtt}) besteht aus einem Publisher,
+einem Subscriber und einem Message-Broker. Der Publisher sendet Nachrichten, der Subscriber
 empfängt bestimmte Nachrichten. Der Message-Broker dient als
 Kommunikationssteuerung und sorgt für das Verteilen der Nachrichten, welche von
 einem Publisher gesendet werden. Der Subscriber kann ein bestimmtes Topic
@@ -154,3 +157,17 @@ Nachricht an alle Subscriber, die das Thema der Nachricht abonniert haben.
 %% Sicherlich ist es noch interessant ein bisschen auf die Programmierung von
 % Pepper einzugehen. Also NAOqi und genauer, wie man Pepper sprechen lässt und
 % vielleicht auch Ausgabe auf dem Tablet
+\section{Programmierung von Pepper}
+Um Anwendungen für Pepper zu programmieren, wird das NAOqi Modul für Python
+verwendet. NAOqi ist das Betriebssystem %Stimmt das???
+von Pepper. Über die \ac{api} des Roboters, kann er gesteuert werden und auf
+seine Funktionen zugegriffen werden. So kann er sprechen und auf seinem Tablet
+können Ausgaben angezeigt werden. Dazu werden Services aufgerufen, die eine
+bestimmte Funktion von Pepper steuern. Für das Sprechen wird der Service
+\texttt{ALAnimatedSpeech} verwendet. Mit \texttt{ALAnimatedSpeech.say()} wird
+dem Roboter ein Text übergeben, den er vorliest.
+
+\subparagraph{}
+Auf dem Tablet können Webseiten angezeigt werden. Mit dem Service
+\texttt{ALTabletService} wird das Tablet gesteuert. Eine Webseite kann mit
+\texttt{ALTabletService.showWebview()} angezeigt werden.
