@@ -36,7 +36,7 @@ und Displays ausgestattet. Auch falls weitere Fähigkeiten für die Erweiterung
 notwendig werden, sind diese drei Roboter gleich gut ausgestattet. Zum Beispiel
 haben sie die Möglichkeit sich zu bewegen. Außerdem verfügen sie über eine
 Verbindung zum Internet um Dialogsysteme, wie z.~B. Microsoft Azure, IBM Watson,
-Google Cloud Platform oder Amazon Web Servics verwenden zu können.
+Google Cloud Platform oder Amazon Web Service verwenden zu können.
 
 % Ich habe hier die Aufzählung der verschiedenen Dialogsysteme verändert, das
 % war so nicht ganz richtig. Ich nenne jetzt jeweils das Cloud-Angebot, aber bin
@@ -178,7 +178,7 @@ u:(Wie geht es dir)
 		Das ist schade.
 \end{lstlisting}
 
-\section{Umwandlung der PowerPoint-Folien}
+\section{Umwandlung der PowerPoint-Folien}\label{sec:umwandlung}
 Der Roboter liest die Notizen zu einer Folie vor. Die Notizen werden mit dem
 Python Package \emph{pptx} in Text, den Pepper vorlesen kann, umgewandelt.
 
@@ -199,4 +199,46 @@ installiertem PowerPoint nötig wäre.
 % Grafik zum Systemüberblick. Bis jetzt finde ich, dass das noch zu wenig ist
 % bei der Umsetzung.
 \section{Anwendungsarchitektur}
+\begin{figure}
+  \centering  
+     \includegraphics[width=\textwidth]{anwendungsarchitektur}
+  \caption{Anwendungsarchitektur}
+  \label{fig:anwendungsarchitektur}
+\end{figure}
+Die Anwendung ist aufgeteilt in den Server, die App für Pepper und ein
+User-Interface in Form einer Webseite. Abb. \ref{fig:anwendungsarchitektur}
+zeigt die Anwendungsarchitektur.
 
+\subsection{Server}
+Auf dem Server ist der größte Teil der Anwendung umgesetzt. Zum Einen wird hier
+die Flask-App ausgeführt, zum Anderen erledigt die Klasse
+\texttt{PresentationManager} alle Aufgaben, die die Präsentation betreffen. Die
+einzelnen Folien werden von der Flask-App bereitgestellt. Durch Aufrufen von
+\texttt{/pepper/presentation/<name>/slides/<slide>/picture} wird die so
+angeforderte Folie der entsprechenden Präsentation bereitgestellt. Außerdem ist
+die Flask-App der \ac{mqtt}-Publisher der Anwendung. Beim Klick auf eine
+Präsentation, wird dem Roboter per \ac{mqtt} übermittelt, welche Präsentation er
+vorstellen soll. Ebenso werden zum Pausieren, Fortsetzen und Stoppen
+\ac{mqtt}-Nachrichten an den Roboter gesendet.
+
+\subparagraph{}
+Im \texttt{PresentationManager} wird die Präsentation, nachdem sie vom Benutzer
+hochgeladen wurde, wie in Kapitel \ref{sec:umwandlung} beschrieben umgewandelt.
+Außerdem stellt die Klasse alle Informationen zu einer Präsentation bereit.
+
+\subsection{Pepper App}
+Auf Pepper wird eine App installiert, die den Roboter steuert. Wie in Kapitel
+\ref{sec:programmierung-von-pepper} beschrieben, wird in der App dafür gesorgt,
+dass Pepper die Folien einer Präsentation auf dem Tablet anzeigt und den
+entsprechenden Text dazu vorliest. Außerdem funktioniert die App als
+\ac{mqtt}-Subscriber, sodass Pepper Nachrichten vom Server erhalten kann.
+Zusätzlich zu dieser App, ist auf Pepper der Dialog installiert, der für die
+Anwendung verwendet wird. So kann der Benutzer die Präsentation per Sprachbefehl
+pausieren und fortsetzen. Auch einfacher Smalltalk, wie "`Hallo"', "`Wie geht es
+dir?"' oder "`Was kannst du?"' ist möglich.
+
+\subsection{User Interface}
+Über das User Interface, kann der Benutzer eine Präsentation, welche Pepper
+vorstellen soll auswählen. Alternativ kann der Benutzer eine neue Präsentation
+hochladen. Die Webseite kann von einem Benutzer direkt aufgerufen werden. Ist
+dies nicht der Fall, wird die Ansicht auf dem Tablet von Pepper angezeigt.

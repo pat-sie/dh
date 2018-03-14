@@ -157,7 +157,7 @@ Nachricht an alle Subscriber, die das Thema der Nachricht abonniert haben.
 %% Sicherlich ist es noch interessant ein bisschen auf die Programmierung von
 % Pepper einzugehen. Also NAOqi und genauer, wie man Pepper sprechen lässt und
 % vielleicht auch Ausgabe auf dem Tablet
-\section{Programmierung von Pepper}
+\section{Programmierung von Pepper}\label{sec:programmierung-von-pepper}
 Um Anwendungen für Pepper zu programmieren, wird das NAOqi Modul für Python
 verwendet. NAOqi ist das Betriebssystem %Stimmt das???
 von Pepper. Über die \ac{api} des Roboters, kann er gesteuert werden und auf
@@ -165,9 +165,7 @@ seine Funktionen zugegriffen werden. So kann er sprechen und auf seinem Tablet
 können Ausgaben angezeigt werden. Dazu werden Services aufgerufen, die eine
 bestimmte Funktion von Pepper steuern. Für das Sprechen wird der Service
 \texttt{ALAnimatedSpeech} verwendet. Mit \texttt{ALAnimatedSpeech.say()} wird
-dem Roboter ein Text übergeben, den er vorliest.
-
-\subparagraph{}
-Auf dem Tablet können Webseiten angezeigt werden. Mit dem Service
-\texttt{ALTabletService} wird das Tablet gesteuert. Eine Webseite kann mit
-\texttt{ALTabletService.showWebview()} angezeigt werden.
+dem Roboter ein Text übergeben, den er vorliest. Auf dem Tablet können Webseiten
+angezeigt werden. Mit dem Service \texttt{ALTabletService} wird das Tablet
+gesteuert. Eine Webseite kann mit \texttt{ALTabletService.showWebview()}
+angezeigt werden.
