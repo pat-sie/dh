@@ -49,9 +49,9 @@ Google Cloud Platform oder Amazon Web Service verwenden zu können.
 
 \subsection{Wirkung auf Kunden}
 % Diesen Satz finde ich etwas sperrig, das lässt sich sicher besser formulieren
-Da das Ziel ist, mit dem Roboter Kunden anzulocken und Kunden mit dem Roboter
-interagieren zu lassen, ist die Wirkung, die der Roboter auf einen Menschen hat
-bei der Auswahl des Roboters zu beachten. 
+Das Ziel ist, mit dem Roboter Kunden anzulocken. Außerdem sollen Kunden mit dem
+Roboter interagieren. Deshalb ist die Wirkung, die der Roboter auf einen
+Menschen erzielt, bei der Auswahl des Roboters zu beachten. 
 Die Menschen verbinden mit verschiedenen Robotern verschiedene Emotionen, auf
 diese muss Rücksicht genommen werden.
 
@@ -154,14 +154,17 @@ Fiducia \& GAD bereits entwickelt.
 
 \subparagraph{}
 Um viel Overhead zu vermeiden wird für die PowerPoint-Präsentation das
-Dialogsystem des Roboters verwendet. Damit lassen sich Dialoge einfach
-erstellen, indem dem Roboter vorgeschrieben wird, wie er auf welche Aussagen
-oder Fragen des Menschen reagieren muss. Listing \ref{lst:pepper-dialog} zeigt
-den Aufbau eines einfachen Dialogs. Pepper wird auf die Frage "`Wie heißt du?"'
-mit "`Mein Name ist Pepper"' antworten. Eine Erweiterung des Dialogs ist
-möglich. Z.~B. können mehrere alternative Antworten vorgegeben werden, von denen
-Pepper eine Zufällige auswählt. Zudem ist es möglich auf Fragen oder Antworten
-des Benutzers nur zu reagieren, wenn er zuvor etwas bestimmtes, anderes fragt.
+Dialogsystem des Roboters verwendet. Hierbei handelt es sich um ChatScript.
+Mit dieser Skriptsprache, ist es möglich ChatBots zu entwickeln. ChatScript
+wurde als OpenSource Projekt von Bruce Wilcox entwickelt wurde. Damit lassen
+sich Dialoge einfach erstellen, indem dem Roboter vorgeschrieben wird, wie er
+auf welche Aussagen oder Fragen des Menschen reagieren muss.
+Listing \ref{lst:pepper-dialog} zeigt den Aufbau eines einfachen Dialogs.
+Pepper wird auf die Frage "`Wie heißt du?"' mit "`Mein Name ist Pepper"'
+antworten. Eine Erweiterung des Dialogs ist möglich. Z.~B. können mehrere
+alternative Antworten vorgegeben werden, von denen Pepper eine Zufällige
+auswählt. Zudem ist es möglich auf Fragen oder Antworten des Benutzers nur zu
+reagieren, wenn er zuvor etwas bestimmtes, anderes fragt.
 So kann der Roboter entsprechend des Kontexts antworten. Listing
 \ref{lst:pepper-dialog-kontext} zeigt hierfür ein Beispiel. Pepper wird je
 nachdem, welche Antwort der Benutzer auf die Gegenfrage des Roboters gibt,
